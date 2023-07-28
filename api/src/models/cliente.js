@@ -3,13 +3,15 @@ class Cliente {
     constructor(i) {
         this.id = i.id
         this.cpf = i.cpf
+        this.nome = i.nome
+        this.telefone = i.telefone
         this.enderecoCep = i.enderecoCep
         this.enderecoNumero = i.enderecoNumero
         this.enderecoComplemento = i.enderecoComplemento
     }
 
     create() {
-        return `INSERT INTO cliente VALUE(default,'${this.cpf}','${this.enderecoCep}','${this.enderecoNumero}','${this.enderecoComplemento}')`
+        return `INSERT INTO cliente VALUE(default,'${this.cpf}','${this.nome}','${this.telefone}', '${this.enderecoCep}','${this.enderecoNumero}','${this.enderecoComplemento}')`
     }
 
     read() {
@@ -20,7 +22,7 @@ class Cliente {
     }
 
     update() {
-        return `UPDATE cliente SET enderecoCep = '${this.enderecoCep}', enderecoNumero = '${enderecoNumero.preco}', enderecoComplemento = '${enderecoComplemento.preco}' WHERE id = ${this.id}`
+        return `UPDATE cliente SET nome = '${this.nome}', telefone = '${this.telefone}', enderecoCep = '${this.enderecoCep}', enderecoNumero = '${enderecoNumero.preco}', enderecoComplemento = '${enderecoComplemento.preco}' WHERE id = ${this.id}`
     }
 
     delete() {

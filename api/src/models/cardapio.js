@@ -8,7 +8,7 @@ class Cardapio {
     }
 
     create() {
-        return `INSERT INTO cardapio VALUE(default,'${this.produto}','${this.descricao}',${this.preco})`
+        return `INSERT INTO cardapio VALUES(default,'${this.produto}','${this.descricao}',${this.preco})`
     }
 
     read() {

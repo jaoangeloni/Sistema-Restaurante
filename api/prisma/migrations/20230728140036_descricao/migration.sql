@@ -22,6 +22,7 @@ CREATE TABLE `Motoboy` (
 CREATE TABLE `Cliente` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `cpf` VARCHAR(191) NOT NULL,
+    `nome` VARCHAR(191) NOT NULL,
     `telefones` VARCHAR(191) NOT NULL,
     `enderecoCep` VARCHAR(191) NOT NULL,
     `enderecoNumero` VARCHAR(191) NOT NULL,
