@@ -11,7 +11,7 @@ class Pedido {
     }
 
     create() {
-        return `INSERT INTO pedido VALUE(default, ${this.clienteId}, ${this.motoboyId}, ${this.dataPedido}, ${this.dataCozinha}, ${this.dataEntrega}, ${this.valorTotal}, ${this.valorEntrega})`
+        return `INSERT INTO pedido VALUE(default, ${this.clienteId}, ${this.motoboyId}, '${this.dataPedido}', '${this.dataCozinha}', '${this.dataEntrega}', ${this.valorTotal}, ${this.valorEntrega})`
     }
 
     read() {
