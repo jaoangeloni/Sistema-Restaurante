@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const Cardapio = require('../controllers/cardapio');
+const Motoboy = require('../controllers/motoboy');
 
-router.post('/cardapio/criar', Cardapio.criar);
-router.get('/cardapio/listar', Cardapio.listar);
-router.get('/cardapio/listar/:id', Cardapio.listar);
-router.put('/cardapio/alterar', Cardapio.alterar);
-router.delete('/cardapio/excluir/:id', Cardapio.excluir);
+router.post('/motoboy/criar', Motoboy.criar);
+router.get('/motoboy/listar', Motoboy.listar);
+router.get('/motoboy/listar/:id', Motoboy.listar);
+router.put('/motoboy/alterar', Motoboy.alterar);
+router.delete('/motoboy/excluir/:id', Motoboy.excluir);
 
 module.exports = router
