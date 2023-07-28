@@ -21,9 +21,9 @@ class Pedido {
             return `SELECT * FROM pedido WHERE id = ${this.id}`
     }
 
-    // update() {
+    update() {
 
-    // }
+    }
 
     delete() {
         return `DELETE FROM pedido WHERE id = ${this.id}`
