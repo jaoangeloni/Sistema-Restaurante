@@ -11,7 +11,7 @@ class Pedido {
     }
 
     create() {
-        return `INSERT INTO pedido VALUE(default, ${this.clienteId}, ${this.motoboyId}, ${this.dataPedido}, ${this.dataCozinha}, ${this.dataEntrega}, ${this.valorTotal}, ${this.valorEntrega},)`
+        return `INSERT INTO pedido VALUE(default, ${this.clienteId}, ${this.motoboyId}, ${this.dataPedido}, ${this.dataCozinha}, ${this.dataEntrega}, ${this.valorTotal}, ${this.valorEntrega})`
     }
 
     read() {
@@ -21,9 +21,9 @@ class Pedido {
             return `SELECT * FROM pedido WHERE id = ${this.id}`
     }
 
-    update() {
-        return `UPDATE pedido SET nome = '${this.nome}', endereco = '${this.endereco}', telefone = '${this.telefone}', enderecoCep = '${this.enderecoCep}', enderecoNumero = '${this.enderecoNumero}', enderecoComplemento = '${this.enderecoComplmento}',`
-    }
+    // update() {
+
+    // }
 
     delete() {
         return `DELETE FROM pedido WHERE id = ${this.id}`

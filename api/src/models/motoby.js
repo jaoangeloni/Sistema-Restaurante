@@ -19,7 +19,7 @@ class Motoboy {
     }
 
     update() {
-        return `UPDATE motoboy SET produto = '${this.produto}', descricao = '${this.descricao}', preco = ${this.preco} WHERE id = ${this.id}`
+        return `UPDATE motoboy SET nome = '${this.nome}', placa = '${this.placa}', modelo = ${this.modelo} WHERE id = ${this.id}`
     }
 
     delete() {
