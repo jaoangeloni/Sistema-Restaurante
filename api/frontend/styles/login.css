@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif
+}
+
+header {
+    width: 100%;
+    height: 35vh;
+    background-image: url('./assets/marmita.jpg');
+    background-size: cover;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: brightness(40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#title {
+    font-size: 3rem;
+    color: #fff;
+}
+
+#buttons {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#abrirCadastro,
+#abrirLogin {
+    width: 80px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    background-color: #D91A3D;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.displayNone {
+    display: none;
+}
