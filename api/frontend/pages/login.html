@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../api.js"></script>
     <link rel="stylesheet" href="../styles/login.css">
 </head>
 
@@ -13,31 +15,22 @@
         <div id="container">
             <h1 id="title">Marmotaria</h1>
             <div id="buttons">
-                <button id="abrirCadastro" onclick="modalCadastro()">Cadastrar</button>
-                <button id="abrirLogin" onclick="modalLogin()">Login</button>
+                <button id="abrirCadastro" onclick="modalCadastro()">Cadastrar cliente</button>
             </div>
-        </div>
     </header>
     <main>
         <div class="cadastrar displayNone ">
             <p id="subtitle">Cadastrar</p>
-            <input type="text" id="cpf" placeholder="Insira seu CPF" required>
-            <input type="text" id="nome" placeholder="Insira seu nome completo" required>
-            <input type="tel" id="telefone" placeholder="Insira seu telefone" required>
+            <input type="text" id="cpf" placeholder="CPF do cliente" required>
+            <input type="text" id="nome" placeholder="Nome do cliente" required>
+            <input type="tel" id="telefone" placeholder="Telefone do cliente" required>
             <fieldset>
                 <legend>Endereço</legend>
-                <input type="number" id="num" placeholder="Insira o Número de sua residência" required>
-                <input type="number" id="cep" placeholder="Insira seu CEP" required>
-                <input type="number" id="complemento" placeholder="Insira um complemento (opicional)">
+                <input type="number" id="num" placeholder="Nº Residência" required>
+                <input type="number" id="cep" placeholder="CEP" required>
+                <input type="number" id="complemento" placeholder="Complemento (opicional)">
             </fieldset>
-            <input type="password" id="senha" placeholder="Insira sua senha" required>
-            <input type="password" id="confirmarSenha" placeholder="Confirme sua senha" required>
             <button id="enviar" onclick="cadastrarDados()">Enviar</button>
-        </div>
-        <div class="login displayNone ">
-            <input type="text" id="cpfLogin" placeholder="CPF" required>
-            <input type="password" id="senhaLogin" placeholder="Senha" required>
-            <button id="autenticar" onclick="autenticarDados()"></button>
         </div>
     </main>
 </body>
