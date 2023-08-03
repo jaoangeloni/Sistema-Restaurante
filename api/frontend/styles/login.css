@@ -33,12 +33,11 @@ header {
 #buttons {
     width: 10%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-#abrirCadastro,
-#abrirLogin {
-    width: 80px;
+#abrirCadastro {
+    width: 200px;
     height: 40px;
     font-size: 1rem;
     font-weight: bold;
@@ -102,6 +101,11 @@ legend {
 #subtitle {
     font-size: 1.5rem;
     margin: 30px;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .displayNone {
