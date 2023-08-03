@@ -26,12 +26,13 @@
             <input type="tel" id="telefone" placeholder="Insira seu telefone" required>
             <fieldset>
                 <legend>Endereço</legend>
-                <input type="number" id="num" placeholder="Insira o Número de sua residência">
-                <input type="number" id="cep" placeholder="Insira seu CEP">
+                <input type="number" id="num" placeholder="Insira o Número de sua residência" required>
+                <input type="number" id="cep" placeholder="Insira seu CEP" required>
+                <input type="number" id="complemento" placeholder="Insira um complemento (opicional)">
             </fieldset>
             <input type="password" id="senha" placeholder="Insira sua senha" required>
             <input type="password" id="confirmarSenha" placeholder="Confirme sua senha" required>
-            <button id="enviar" onclick="cadastrarDados()"></button>
+            <button id="enviar" onclick="cadastrarDados()">Enviar</button>
         </div>
         <div class="login displayNone ">
             <input type="text" id="cpfLogin" placeholder="CPF" required>

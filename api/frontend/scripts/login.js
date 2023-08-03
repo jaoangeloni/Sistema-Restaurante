@@ -20,5 +20,21 @@ const iSenha = document.querySelector("#senha")
 const iConfirmarSenha = document.querySelector("#confirmarSenha")
 
 function cadastrarDados() {
+    let cliente = {
+        "cpf": iCpf.value,
+        "nome": iNome.value,
+        "telefones": iTel.value,
+        "enderecoCep": iCep.value,
+        "enderecoNumero": iNum.value,
+        "enderecoComplemento": i.value
+    }
 
+    api.post("/cliente", cliente)
+        .then(resp => {
+            alert("Cadastrado com sucesso")
+            iNome.value = ""
+            iTel.value = ""
+            iEmail.value = ""
+            iSenha.value = ""
+        })
 }
