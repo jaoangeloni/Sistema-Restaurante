@@ -1,5 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv");
+
+const PORT = process.env.PORT || 3000
 
 const routerCardapio = require('./src/routes/cardapio')
 const routerCliente = require('./src/routes/cliente')
@@ -18,6 +21,6 @@ app.use('/', routerPedido)
 app.use('/', routerItens)
 app.use('/', routerMotoboy)
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Positivo e operante");
 });
