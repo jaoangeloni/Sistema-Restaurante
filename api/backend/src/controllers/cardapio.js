@@ -1,56 +1,42 @@
-const con = require('../DAO/connect')
-const Cardapio = require('../models/cardapio')
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-const modelarLista = (lista) => {
-    for (i = 0; i < lista.length; i++)
-        lista[i] = new Cardapio(lista[i])
-    return lista
+const read = async (req, res) => {
+    const cardapio = await prisma.cardapio.findMany();
+    return res.json(cardapio);
 }
 
-
-const criar = (req, res) => {
-    let cardapio = new Cardapio(req.body)
-    con.query(cardapio.create(), (err, result) => {
-        if (err == null)
-            res.status(201).end()
-        else
-            res.status(500).json(err).end()
-    })
+const create = async (req, res) => {
+    const data = req.body;
+    const cardapio = await prisma.cardapio.create({
+        data: data
+    });
+    return res.status(201).json(cardapio).end();
 }
 
-const listar = async (req, res) => {
-    let cardapio = new Cardapio(req.params)
-    con.query(cardapio.read(), (err, result) => {
-        if (err == null) {
-            res.json(modelarLista(result)).end()
+const update = async (req, res) => {
+    const data = req.body;
+    let cardapio = await prisma.cardapio.update({
+        data: data,
+        where: {
+            id: parseInt(req.body.id)
         }
-    })
+    });
+    res.status(202).json(cardapio).end();
 }
 
-const alterar = (req, res) => {
-    let cardapio = new Cardapio(req.body)
-    con.query(cardapio.update(), (err, result) => {
-        if (result.affectedRows > 0)
-            res.status(202).end()
-        else
-            res.status(404).end()
-    })
+const del = async (req, res) => {
+    let cardapio = await prisma.cardapio.delete({
+        where: {
+            id: parseInt(req.params.id)
+        }
+    });
+    res.status(204).json(cardapio).end();
 }
-
-const excluir = (req, res) => {
-    let cardapio = new Cardapio(req.params)
-    con.query(cardapio.delete(), (err, result) => {
-        if (result.affectedRows > 0)
-            res.status(204).end()
-        else
-            res.status(404).end()
-    })
-}
-
 
 module.exports = {
-    criar,
-    listar,
-    alterar,
-    excluir
-}
+    read,
+    create,
+    update,
+    del
+};

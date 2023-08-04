@@ -1,12 +1,11 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
 
-const Motoboy = require('../controllers/motoboy');
+const motoboy = require('../controllers/motoboy');
+router.post('/motoboy', motoboy.create);
+router.get('/motoboy', motoboy.read);
+router.put('/motoboy', motoboy.update);
+router.delete('/motoboy/:id', motoboy.del);
 
-router.post('/motoboy/criar', Motoboy.criar);
-router.get('/motoboy/listar', Motoboy.listar);
-router.get('/motoboy/listar/:id', Motoboy.listar);
-router.put('/motoboy/alterar', Motoboy.alterar);
-router.delete('/motoboy/excluir/:id', Motoboy.excluir);
-
-module.exports = router
+module.exports = router;
