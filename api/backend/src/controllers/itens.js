@@ -15,23 +15,31 @@ const create = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    const data = req.body;
-    let itens = await prisma.itens.update({
-        data: data,
-        where: {
-            id: parseInt(req.body.id)
-        }
-    });
-    res.status(202).json(itens).end();
+    try {
+        const data = req.body;
+        let itens = await prisma.itens.update({
+            data: data,
+            where: {
+                id: parseInt(req.body.id)
+            }
+        });
+        res.status(202).json(itens).end();
+    } catch (error) {
+        res.status(404); json({ error: error.message.end() })
+    }
 }
 
 const del = async (req, res) => {
-    let itens = await prisma.itens.delete({
-        where: {
-            id: parseInt(req.params.id)
-        }
-    });
-    res.status(204).json(itens).end();
+    try {
+        let itens = await prisma.itens.delete({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        });
+        res.status(204).json(itens).end();
+    } catch (error) {
+        res.status(404); json({ error: error.message.end() })
+    }
 }
 
 module.exports = {
