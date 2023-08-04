@@ -25,7 +25,7 @@ const update = async (req, res) => {
         });
         res.status(202).json(motoboy).end();
     } catch (error) {
-        res.status(404); json({ error: error.message.end() })
+        res.status(404).json({ error: error.message }).end()
     }
 }
 
@@ -38,7 +38,7 @@ const del = async (req, res) => {
         });
         res.status(204).json(motoboy).end();
     } catch (error) {
-        res.status(404); json({ error: error.message.end() })
+        res.status(404).json({ error: error.message }).end()
     }
 }
 

@@ -7,11 +7,15 @@ const read = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    const data = req.body;
-    const cliente = await prisma.cliente.create({
-        data: data
-    });
-    return res.status(201).json(cliente).end();
+    try {
+        const data = req.body;
+        const cliente = await prisma.cliente.create({
+            data: data
+        });
+        return res.status(201).json(cliente).end();
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end()
+    }
 }
 
 const update = async (req, res) => {
@@ -25,7 +29,7 @@ const update = async (req, res) => {
         });
         res.status(202).json(cliente).end();
     } catch (error) {
-        res.status(404); json({ error: error.message.end() })
+        res.status(404).json({ error: error.message }).end()
     }
 }
 
@@ -38,7 +42,7 @@ const del = async (req, res) => {
         });
         res.status(204).json(cliente).end();
     } catch (error) {
-        res.status(404); json({ error: error.message.end() })
+        res.status(404).json({ error: error.message }).end()
     }
 }
 
