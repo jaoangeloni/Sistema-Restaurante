@@ -1,56 +1,42 @@
-const con = require('../DAO/connect')
-const Cliente = require('../models/cliente')
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
-const modelarLista = (lista) => {
-    for (i = 0; i < lista.length; i++)
-        lista[i] = new Cliente(lista[i])
-    return lista
+const read = async (req, res) => {
+    const motoboys = await prisma.motoboy.findMany();
+    return res.json(motoboys);
 }
 
-
-const criar = (req, res) => {
-    let cliente = new Cliente(req.body)
-    con.query(cliente.create(), (err, result) => {
-        if (err == null)
-            res.status(201).end()
-        else
-            res.status(500).json(err).end()
-    })
+const create = async (req, res) => {
+    const data = req.body;
+    const motoboy = await prisma.motoboy.create({
+        data: data
+    });
+    return res.status(201).json(motoboy).end();
 }
 
-const listar = async (req, res) => {
-    let cliente = new Cliente(req.params)
-    con.query(cliente.read(), (err, result) => {
-        if (err == null) {
-            res.json(modelarLista(result)).end()
+const update = async (req, res) => {
+    const data = req.body;
+    let motoboy = await prisma.motoboy.update({
+        data: data,
+        where: {
+            id: parseInt(req.body.id)
         }
-    })
+    });
+    res.status(202).json(motoboy).end();
 }
 
-const alterar = (req, res) => {
-    let cliente = new Cliente(req.body)
-    con.query(cliente.update(), (err, result) => {
-        if (result.affectedRows > 0)
-            res.status(202).end()
-        else
-            res.status(404).end()
-    })
+const del = async (req, res) => {
+    let motoboy = await prisma.motoboy.delete({
+        where: {
+            id: parseInt(req.params.id)
+        }
+    });
+    res.status(204).json(motoboy).end();
 }
-
-const excluir = (req, res) => {
-    let cliente = new Cliente(req.params)
-    con.query(cliente.delete(), (err, result) => {
-        if (result.affectedRows > 0)
-            res.status(204).end()
-        else
-            res.status(404).end()
-    })
-}
-
 
 module.exports = {
-    criar,
-    listar,
-    alterar,
-    excluir
-}
+    read,
+    create,
+    update,
+    del
+};
