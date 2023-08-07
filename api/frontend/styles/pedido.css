@@ -30,12 +30,6 @@ header {
     color: #fff;
 }
 
-#buttons {
-    width: 10%;
-    display: flex;
-    justify-content: center;
-}
-
 #abrirCadastro {
     width: 200px;
     height: 40px;
@@ -49,22 +43,12 @@ header {
     cursor: pointer;
 }
 
-
-main {
-    width: 100%;
-    height: 65vh;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-}
-
 .cadastrar {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 5px;
-    ;
 }
 
 input {
@@ -84,7 +68,6 @@ input {
     border: none;
     border-radius: 5px;
 }
-
 
 fieldset {
     display: flex;
@@ -108,6 +91,56 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.displayNone {
-    display: none;
+.itens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 50px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.descricao {
+    font-size: 0.8rem;
+}
+
+.card img {
+    width: 100px;
+}
+
+.quantidade {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    padding: 6px 6px;
+    border: 1px solid #000;
+    border-radius: 7px;
+    width: 80px;
+    text-align: center;
+}
+
+.botoes {
+    background-color: #D91A3D;
+    color: #fff;
+    padding: 6px;
+    border-radius: 7px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
