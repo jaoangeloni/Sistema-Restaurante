@@ -44,11 +44,14 @@ header {
 }
 
 .cadastrar {
+    position: sticky;
+    top: 0;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 5px;
+    gap: 100px;
+    background-color: #fff;
 }
 
 input {
@@ -73,8 +76,8 @@ fieldset {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     padding: 30px;
+    gap: 5px;
 }
 
 legend {
@@ -93,6 +96,8 @@ input::-webkit-inner-spin-button {
 
 .itens {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 50px;
     padding: 50px;
@@ -102,11 +107,11 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 250px;
-    height: 250px;
+    justify-content: space-between;
+    width: 275px;
+    height: 275px;
     border: 2px solid black;
-    padding: 10px;
+    padding: 12px;
     border-radius: 5px;
 }
 

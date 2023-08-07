@@ -55,18 +55,28 @@ function criarCard(imovel) {
     let div = document.createElement("div")
     div.classList.add("quantidade")
 
+    let adicionar = document.createElement("input")
+    adicionar.type = "number";
+    adicionar.value = 0
+    adicionar.classList.add("input")
+
+
     let minus = document.createElement("span")
     minus.innerHTML = "-"
     minus.classList.add("botoes")
+    minus.onclick = function () {
+        if (adicionar.value <= 0)
+            adicionar.value = 0
+        else
+            adicionar.value--
+    };
 
     let plus = document.createElement("span")
     plus.innerHTML = "+"
     plus.classList.add("botoes")
-
-    let adicionar = document.createElement("input")
-    adicionar.type = "number";
-    adicionar.value = "0"
-    adicionar.classList.add("input")
+    plus.onclick = function () {
+        adicionar.value++
+    };
 
     nome.innerHTML = imovel.produto
 
