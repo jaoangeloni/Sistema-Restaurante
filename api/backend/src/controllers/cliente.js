@@ -1,11 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const read = async (req, res) => {
-    const cliente = await prisma.cliente.findMany();
-    return res.json(cliente);
-}
-
 const create = async (req, res) => {
     try {
         const data = req.body;
@@ -14,7 +9,22 @@ const create = async (req, res) => {
         });
         return res.status(201).json(cliente).end();
     } catch (error) {
-        res.status(400).json({ error: error.message }).end()
+        res.status(400).json({ error: error.message }).end();
+    }
+}
+
+const read = async (req, res) => {
+    if (req.params.id) {
+        const id = parseInt(req.params.id);
+        const cliente = await prisma.cliente.findUnique({
+            where: {
+                id: id
+            }
+        });
+        return res.json(cliente);
+    } else {
+        const cliente = await prisma.cliente.findMany();
+        return res.json(cliente);
     }
 }
 
@@ -29,7 +39,7 @@ const update = async (req, res) => {
         });
         res.status(202).json(cliente).end();
     } catch (error) {
-        res.status(404).json({ error: error.message }).end()
+        res.status(404).json({ error: error.message }).end();
     }
 }
 
@@ -42,7 +52,7 @@ const del = async (req, res) => {
         });
         res.status(204).json(cliente).end();
     } catch (error) {
-        res.status(404).json({ error: error.message }).end()
+        res.status(404).json({ error: error.message }).end();
     }
 }
 

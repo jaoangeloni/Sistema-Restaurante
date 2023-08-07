@@ -1,17 +1,27 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const read = async (req, res) => {
-    const motoboy = await prisma.motoboy.findMany();
-    return res.json(motoboy);
-}
-
 const create = async (req, res) => {
     const data = req.body;
     const motoboy = await prisma.motoboy.create({
         data: data
     });
     return res.status(201).json(motoboy).end();
+}
+
+const read = async (req, res) => {
+    if (req.params.id) {
+        const id = parseInt(req.params.id);
+        const motoboy = await prisma.motoboy.findUnique({
+            where: {
+                id: id
+            }
+        });
+        return res.json(motoboy);
+    } else {
+        const motoboy = await prisma.motoboy.findMany();
+        return res.json(motoboy);
+    }
 }
 
 const update = async (req, res) => {
@@ -25,7 +35,7 @@ const update = async (req, res) => {
         });
         res.status(202).json(motoboy).end();
     } catch (error) {
-        res.status(404).json({ error: error.message }).end()
+        res.status(404).json({ error: error.message }).end();
     }
 }
 
@@ -38,7 +48,7 @@ const del = async (req, res) => {
         });
         res.status(204).json(motoboy).end();
     } catch (error) {
-        res.status(404).json({ error: error.message }).end()
+        res.status(404).json({ error: error.message }).end();
     }
 }
 
