@@ -33,7 +33,6 @@ const readCozinha = async (req, res) => {
         select: {
             "id": true,
             "clienteId": true,
-            "clienteId": true,
             "motoboyId": true,
             "dataPedido": true,
             "dataCozinha": true,
@@ -42,9 +41,7 @@ const readCozinha = async (req, res) => {
             "valorEntrega": true,
             "itens": {
                 select: {
-                    "id": true,
                     "quantidade": true,
-                    "valor": true,
                     "cardapio": true
                 }
             }
@@ -72,9 +69,7 @@ const readEntrega = async (req, res) => {
             "valorEntrega": true,
             "itens": {
                 select: {
-                    "id": true,
                     "quantidade": true,
-                    "valor": true,
                     "cardapio": true
                 }
             },
@@ -113,6 +108,24 @@ const update = async (req, res) => {
     }
 }
 
+const concluirCozinha = async (req, res) => {
+    try {
+        const data = req.body
+        if (req.body.clienteID = 1) {
+            data.dataCozinha = new Date().toISOString()
+        }
+        let pedido = await prisma.pedido.update({
+            data: data,
+            where: {
+                id: parseInt(req.body.id)
+            }
+        });
+        res.status(202).json(pedido).end();
+    } catch (error) {
+        res.status(404).json({ error: error.message }).end();
+    }
+}
+
 const del = async (req, res) => {
     try {
         let pedido = await prisma.pedido.delete({
@@ -133,5 +146,6 @@ module.exports = {
     readHoje,
     create,
     update,
-    del
+    del,
+    concluirCozinha
 }
