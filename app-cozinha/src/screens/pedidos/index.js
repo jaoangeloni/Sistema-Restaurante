@@ -5,9 +5,8 @@ import ItemPedido from '../../components/item';
 
 const PedidosScreen = ({ navigation }) => {
 
-    const uri = 'http://localhost:3000/pedido';
     const [pedidos, setPedidos] = useState([]);
-
+    const uri = 'http://localhost:3000/pedido';
     useEffect(() => {
         fetch(uri + '/cozinha', { method: 'GET' })
             .then(response => response.json())
@@ -16,25 +15,25 @@ const PedidosScreen = ({ navigation }) => {
             });
     }, []);
 
-    const concluirPedido = (id) => {
+    const concluirPedido = (id, clienteId) => {
         const corpo = {
             id: id,
-            dataCozinha: new Date()
+            dataCozinha: new Date(),
         }
+        if (clienteId == 1) corpo.dataEntrega = new Date();
 
         const options = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(corpo)
         };
-
         fetch(uri, options)
             .then(resp => resp.status)
             .then(data => {
-                if (data = 202) {
-                    navigation.navigate('HomeScreen')
+                if (data == 202) {
+                    navigation.navigate('HomeScreen');
                 } else {
-                    alert('Erro ao concluir pedido!')
+                    alert('Erro ao concluir pedido!');
                 }
             });
     }
@@ -43,7 +42,6 @@ const PedidosScreen = ({ navigation }) => {
         <View style={styles.container}>
             <FlatList
                 data={pedidos}
-                keyExtractor={item => item.id.toString()}
                 renderItem={({ item }) => (
                     <View style={styles.pedido}>
                         <Text style={styles.text}>Id: {item.id}</Text>
@@ -51,10 +49,11 @@ const PedidosScreen = ({ navigation }) => {
                             Data: {item.dataPedido.toString().slice(0, 10) + " "}
                             Hora: {item.dataPedido.toString().slice(11, 16)}
                         </Text>
+                        <Text style={styles.text}>Entrega: {item.clienteId == 1 ? "Não" : "Sim"}</Text>
                         <ItemPedido item={item.itens} />
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => concluirPedido(item.id)}
+                            onPress={() => concluirPedido(item.id, item.clienteId)}
                         >
                             <Text style={styles.buttonText}>Concluído</Text>
                         </TouchableOpacity>
