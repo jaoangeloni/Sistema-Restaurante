@@ -12,7 +12,6 @@ const EntregaScreen = ({ navigation }) => {
             .then(response => response.json())
             .then(data => {
                 setPedidos(data);
-                console.log(data)
             });
     }, []);
 
