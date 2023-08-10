@@ -12,12 +12,12 @@ export default function App() {
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
-          options={{ title: 'Cozinha' }}
+          options={{ title: 'Entregas' }}
         />
         <Stack.Screen
           name="EntregaScreen"
           component={EntregaScreen}
-          options={{ title: 'Entregas' }}
+          options={{ title: 'Pedidos' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
