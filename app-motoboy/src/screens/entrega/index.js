@@ -29,6 +29,7 @@ const EntregaScreen = ({ navigation }) => {
             .then(resp => resp.status)
             .then(data => {
                 if (data == 202) {
+                    alert('Concluído');
                     navigation.navigate('HomeScreen');
                 } else {
                     alert('Erro ao concluir pedido!');
@@ -42,6 +43,7 @@ const EntregaScreen = ({ navigation }) => {
                 data={pedidos}
                 renderItem={({ item }) => (
                     <View style={styles.pedido}>
+                        <Text style={styles.motoboy}>ID motoboy: {item.motoboyId}</Text>
                         <Text style={styles.text}>Cliente: {item.cliente.nome}</Text>
                         <Text style={styles.text}>CEP: {item.cliente.enderecoCep}</Text>
                         <Text style={styles.text}>Nº Casa:{item.cliente.enderecoNumero}</Text>

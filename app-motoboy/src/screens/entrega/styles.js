@@ -33,6 +33,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         color: '#fff',
+    },
+    motoboy: {
+        fontSize: 16,
+        borderBottomWidth: 2,
+        borderColor: '#DDD',
+        alignSelf: 'center',
+        margin: 10,
     }
 });
 
